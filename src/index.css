@@ -14,3 +14,9 @@
   --color-info: #6b7280; /* Secondary Text */
   --color-surface: #ffffff; /* Optional: surface color */
 }
+
+a.active {
+  @apply underline;
+  @apply decoration-primary;
+  @apply decoration-4;
+}
