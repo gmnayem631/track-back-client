@@ -81,13 +81,16 @@ const Footer = () => {
           {/* Navigation Links */}
           <div className="flex flex-col items-center md:items-start space-y-3">
             <h2 className="text-xl font-bold text-neutral">Quick Links</h2>
-            <NavLink to="/about" className="text-neutral  transition">
+            <NavLink to="/aboutUs" className="text-neutral  transition">
               About Us
             </NavLink>
             <NavLink to="/contact" className="text-neutral transition">
               Contact
             </NavLink>
-            <NavLink to="/terms" className="text-neutral  transition">
+            <NavLink
+              to="/termsAndConditions"
+              className="text-neutral  transition"
+            >
               Terms & Conditions
             </NavLink>
           </div>

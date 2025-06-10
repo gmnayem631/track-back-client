@@ -7,6 +7,9 @@ import ManageItems from "../pages/ManageItems";
 import RecoveredItems from "../pages/RecoveredItems";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
+import AboutUs from "../pages/AboutUs";
+import Contact from "../pages/Contact";
+import TermsAndConditions from "../pages/TermsAndConditions";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +39,18 @@ const router = createBrowserRouter([
       {
         path: "/login",
         Component: Login,
+      },
+      {
+        path: "/aboutUs",
+        Component: AboutUs,
+      },
+      {
+        path: "/contact",
+        Component: Contact,
+      },
+      {
+        path: "/termsAndConditions",
+        Component: TermsAndConditions,
       },
     ],
   },
