@@ -7,7 +7,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import logo from "../assets/lost-and-found.png";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Footer = () => {
   return (
@@ -16,10 +16,13 @@ const Footer = () => {
         <div className="max-w-11/12 mx-auto grid md:grid-cols-3 gap-10">
           {/* Company Info */}
           <div className="flex flex-col items-center md:items-end text-center md:text-right">
-            <div className="flex items-center justify-center">
+            <Link
+              to={"/"}
+              className="flex items-center justify-center cursor-pointer"
+            >
               <img src={logo} alt="" className="h-[50px]" />
               <h2 className="text-xl font-bold text-neutral">TrackBack</h2>
-            </div>
+            </Link>
             <p className="text-sm text-neutral/80">
               Every lost item has a story — and a chance to be found.
             </p>
