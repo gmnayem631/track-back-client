@@ -12,19 +12,19 @@ const Navbar = () => {
         Home
       </NavLink>
       <NavLink
-        to={"/addTask"}
+        to={"/lostAndFoundItems"}
         className="btn bg-transparent text-neutral border-0 text-base"
       >
         Lost & Found Items
       </NavLink>
       <NavLink
-        to={"/browseTasks"}
+        to={"/recoveredItems"}
         className="btn bg-transparent text-neutral border-0 text-base"
       >
         All Recovered Items
       </NavLink>
       <NavLink
-        to={"/myPostedTasks"}
+        to={"/manageItems"}
         className="btn bg-transparent text-neutral border-0 text-base"
       >
         Manage My Items
@@ -32,7 +32,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar p-0 max-w-7xl mx-auto">
+    <div className="navbar p-0 max-w-11/12 mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
