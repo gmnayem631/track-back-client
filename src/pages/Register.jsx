@@ -4,6 +4,14 @@ import regLottie from "../assets/animations/register-lottie.json";
 import Lottie from "lottie-react";
 
 const Register = () => {
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+  };
+
   return (
     <div className="min-h-screen bg-base-100 flex items-center justify-evenly flex-col-reverse md:flex-row px-4">
       <div className="w-full max-w-md bg-white p-8 rounded-3xl shadow-md">
@@ -11,14 +19,14 @@ const Register = () => {
           Create an Account
         </h2>
 
-        <form>
+        <form onSubmit={handleRegister}>
           <div className="mb-4">
             <label className="block text-neutral mb-1">Name</label>
             <input
               type="text"
               placeholder="Enter your name"
               className="input input-bordered w-full rounded-xl"
-              required
+              name="name"
             />
           </div>
 
@@ -28,7 +36,7 @@ const Register = () => {
               type="email"
               placeholder="Enter your email"
               className="input input-bordered w-full rounded-xl"
-              required
+              name="email"
             />
           </div>
 
@@ -38,7 +46,7 @@ const Register = () => {
               type="text"
               placeholder="Enter photo URL"
               className="input input-bordered w-full rounded-xl"
-              required
+              name="photoUrl"
             />
           </div>
 
@@ -48,7 +56,7 @@ const Register = () => {
               type="password"
               placeholder="Minimum 6 characters, 1 uppercase & 1 lowercase"
               className="input input-bordered w-full rounded-xl"
-              required
+              name="password"
             />
           </div>
 
