@@ -6,7 +6,7 @@
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: #68dbc9; /* Main Blue */
+  --color-primary: salmon; /* Main Blue */
   --color-secondary: #43de43; /* Accent Green */
   --color-accent: #86eb9d; /* Hover Green */
   --color-base-100: #ebebeb; /* Background */
@@ -15,8 +15,9 @@
   --color-surface: #ffffff; /* Optional: surface color */
 }
 
-a.active {
-  @apply underline;
-  @apply decoration-primary;
-  @apply decoration-4;
+header a.active {
+  @apply bg-primary;
+}
+footer a.active {
+  @apply font-bold;
 }

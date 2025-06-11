@@ -6,7 +6,7 @@ import loginLottie from "../assets/animations/login-lottie.json";
 
 const Login = () => {
   return (
-    <div className="min-h-screen bg-base-100 flex items-center justify-evenly px-4">
+    <div className="min-h-screen bg-base-100 flex items-center justify-evenly flex-col md:flex-row px-4">
       <div className="">
         <Lottie
           animationData={loginLottie}
@@ -46,7 +46,7 @@ const Login = () => {
 
           <div className="divider text-info">or</div>
 
-          <button className="btn btn-outline btn-error w-full rounded-xl">
+          <button className="btn btn-outline btn-primary w-full rounded-xl">
             <FcGoogle />
             Continue with Google
           </button>

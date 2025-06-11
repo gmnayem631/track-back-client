@@ -5,7 +5,7 @@ import Lottie from "lottie-react";
 
 const Register = () => {
   return (
-    <div className="min-h-screen bg-base-100 flex items-center justify-evenly px-4">
+    <div className="min-h-screen bg-base-100 flex items-center justify-evenly flex-col-reverse md:flex-row px-4">
       <div className="w-full max-w-md bg-white p-8 rounded-3xl shadow-md">
         <h2 className="text-2xl font-bold text-primary mb-6 text-center">
           Create an Account
@@ -46,7 +46,7 @@ const Register = () => {
             <label className="block text-neutral mb-1">Password</label>
             <input
               type="password"
-              placeholder="Password (Min 6 chars, 1 uppercase & lowercase)"
+              placeholder="Minimum 6 characters, 1 uppercase & 1 lowercase"
               className="input input-bordered w-full rounded-xl"
               required
             />
