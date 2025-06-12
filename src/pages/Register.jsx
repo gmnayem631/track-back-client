@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import regLottie from "../assets/animations/register-lottie.json";
 import Lottie from "lottie-react";
 import { AuthContext } from "../context/AuthContext";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { createUser } = use(AuthContext);
@@ -10,14 +11,20 @@ const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    const photoUrl = form.photoUrl.value;
 
-    // create user
     createUser(email, password)
       .then((result) => {
-        console.log(result);
+        const user = result.user;
+
+        // Now update the profile
+        return updateProfile(user, {
+          displayName: name,
+          photoURL: photoUrl,
+        });
       })
       .catch((error) => {
         console.log(error);

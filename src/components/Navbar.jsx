@@ -1,6 +1,6 @@
 import React, { use } from "react";
 import logo from "../assets/lost-and-found.png";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
@@ -25,22 +25,16 @@ const Navbar = () => {
         Home
       </NavLink>
       <NavLink
-        to={"/lostAndFoundItems"}
+        to={"/aboutUs"}
         className="btn bg-transparent text-neutral border-0 text-base"
       >
-        Lost & Found Items
+        About Us
       </NavLink>
       <NavLink
-        to={"/recoveredItems"}
+        to={"/contact"}
         className="btn bg-transparent text-neutral border-0 text-base"
       >
-        All Recovered Items
-      </NavLink>
-      <NavLink
-        to={"/manageItems"}
-        className="btn bg-transparent text-neutral border-0 text-base"
-      >
-        Manage My Items
+        Contact
       </NavLink>
     </>
   );
@@ -81,12 +75,53 @@ const Navbar = () => {
       </div>
       <div className="navbar-end gap-5">
         {user ? (
-          <button
-            onClick={handleLogOut}
-            className="btn btn-primary text-neutral text-base"
-          >
-            Log Out
-          </button>
+          <div className="flex items-center gap-4">
+            <>
+              <button
+                className="cursor-pointer"
+                popoverTarget="popover-1"
+                style={{ anchorName: "--anchor-1" }}
+              >
+                <img
+                  src={user.photoURL}
+                  className="rounded-full h-[60px]"
+                  alt=""
+                />
+              </button>
+
+              <ul
+                className="dropdown menu w-52 rounded-box bg-base-100 shadow-sm"
+                popover="auto"
+                id="popover-1"
+                style={{ positionAnchor: "--anchor-1" }}
+              >
+                <li>
+                  <NavLink
+                    to={"/lostAndFoundItems"}
+                    className="dropdown-option"
+                  >
+                    Add Lost & Found Items
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to={"/recoveredItems"} className="dropdown-option">
+                    All Recovered Items
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to={"/manageItems"} className="dropdown-option">
+                    Manage My Items
+                  </NavLink>
+                </li>
+              </ul>
+            </>
+            <button
+              onClick={handleLogOut}
+              className="btn btn-primary text-neutral text-base"
+            >
+              Log Out
+            </button>
+          </div>
         ) : (
           <>
             <NavLink
