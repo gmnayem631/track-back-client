@@ -1,8 +1,21 @@
-import React from "react";
+import React, { use } from "react";
 import logo from "../assets/lost-and-found.png";
-import { Link, NavLink } from "react-router";
+import { NavLink } from "react-router";
+import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
+  const { user, logOutUser } = use(AuthContext);
+
+  const handleLogOut = () => {
+    logOutUser()
+      .then(() => {
+        console.log("user signed out");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const links = (
     <>
       <NavLink
@@ -67,15 +80,29 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end gap-5">
-        <Link
-          to={"/register"}
-          className="btn btn-primary text-neutral text-base"
-        >
-          Register
-        </Link>
-        <Link to={"/login"} className="btn btn-primary text-neutral text-base">
-          Login
-        </Link>
+        {user ? (
+          <button
+            onClick={handleLogOut}
+            className="btn btn-primary text-neutral text-base"
+          >
+            Log Out
+          </button>
+        ) : (
+          <>
+            <NavLink
+              to={"/register"}
+              className="btn btn-primary text-neutral text-base"
+            >
+              Register
+            </NavLink>
+            <NavLink
+              to={"/login"}
+              className="btn btn-primary text-neutral text-base"
+            >
+              Login
+            </NavLink>
+          </>
+        )}
       </div>
     </div>
   );
