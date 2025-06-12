@@ -4,6 +4,7 @@ import regLottie from "../assets/animations/register-lottie.json";
 import Lottie from "lottie-react";
 import { AuthContext } from "../context/AuthContext";
 import { updateProfile } from "firebase/auth";
+import SocialLogin from "../components/SocialLogin";
 
 const Register = () => {
   const { createUser } = use(AuthContext);
@@ -83,6 +84,7 @@ const Register = () => {
             Register
           </button>
         </form>
+        <SocialLogin></SocialLogin>
 
         <p className="text-sm text-info mt-4 text-center">
           Already have an account?{" "}

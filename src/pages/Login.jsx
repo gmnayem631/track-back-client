@@ -1,9 +1,9 @@
 import Lottie from "lottie-react";
 import React, { use } from "react";
-import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
 import loginLottie from "../assets/animations/login-lottie.json";
 import { AuthContext } from "../context/AuthContext";
+import SocialLogin from "../components/SocialLogin";
 
 const Login = () => {
   const { loginUser } = use(AuthContext);
@@ -64,14 +64,8 @@ const Login = () => {
           <button className="btn btn-primary w-full mt-2 text-neutral rounded-xl">
             Login
           </button>
-
-          <div className="divider text-info">or</div>
-
-          <button className="btn btn-outline btn-primary w-full rounded-xl">
-            <FcGoogle />
-            Continue with Google
-          </button>
         </form>
+        <SocialLogin></SocialLogin>
 
         <p className="text-sm text-info mt-4 text-center">
           Don't have an account?{" "}
