@@ -12,6 +12,7 @@ import Contact from "../pages/Contact";
 import TermsAndConditions from "../pages/TermsAndConditions";
 import LatestItems from "../components/LatestItems";
 import ItemDetails from "../pages/ItemDetails";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/addLostAndFoundItems",
-        Component: AddLostAndFoundItem,
+        element: (
+          <PrivateRoute>
+            <AddLostAndFoundItem></AddLostAndFoundItem>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/manageItems",

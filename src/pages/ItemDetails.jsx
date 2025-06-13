@@ -36,12 +36,10 @@ const ItemDetails = ({ user }) => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg mt-6">
-      <img
-        src={thumbnail}
-        alt={title}
-        className="w-full h-64 object-cover rounded-md"
-      />
+    <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg my-10">
+      <div className="flex justify-center">
+        <img src={thumbnail} alt={title} className="h-64 rounded-md" />
+      </div>
       <h2 className="text-2xl font-bold mt-4">{title}</h2>
       <p className="text-gray-700 mt-2">{description}</p>
       <div className="mt-4 space-y-1">
@@ -60,7 +58,7 @@ const ItemDetails = ({ user }) => {
       </div>
 
       <button
-        className="btn btn-primary mt-6"
+        className="btn btn-primary mt-6 text-neutral font-bold"
         onClick={() => document.getElementById("recovery_modal").showModal()}
       >
         {postType === "Lost" ? "Found This!" : "This is Mine!"}
@@ -111,11 +109,20 @@ const ItemDetails = ({ user }) => {
                 />
               )}
             </div>
-            <div className="modal-action">
-              {/* This submit button will close the modal automatically */}
-              <button type="submit" className="btn btn-success">
-                Submit
-              </button>
+
+            <div className="flex justify-between">
+              <div className="modal-action">
+                {/* This submit button will close the modal automatically */}
+                <button type="submit" className="btn btn-success">
+                  Submit
+                </button>
+              </div>
+              <div className="modal-action">
+                <form method="dialog">
+                  {/* if there is a button in form, it will close the modal */}
+                  <button className="btn btn-primary">Close</button>
+                </form>
+              </div>
             </div>
           </form>
         </div>

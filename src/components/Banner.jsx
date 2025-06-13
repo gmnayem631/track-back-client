@@ -19,7 +19,7 @@ const Banner = () => {
           </p>
           <div className="flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-4">
             <Link
-              to="/addItem"
+              to="/addLostAndFoundItems"
               className="bg-primary text-white px-6 py-3 rounded-lg text-sm font-semibold transition duration-200"
             >
               Report Lost Item
