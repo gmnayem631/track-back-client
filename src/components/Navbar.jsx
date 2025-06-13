@@ -25,16 +25,16 @@ const Navbar = () => {
         Home
       </NavLink>
       <NavLink
+        to={"/allItems"}
+        className="btn bg-transparent text-neutral border-0 text-base"
+      >
+        Lost & Found Items
+      </NavLink>
+      <NavLink
         to={"/aboutUs"}
         className="btn bg-transparent text-neutral border-0 text-base"
       >
         About Us
-      </NavLink>
-      <NavLink
-        to={"/contact"}
-        className="btn bg-transparent text-neutral border-0 text-base"
-      >
-        Contact
       </NavLink>
     </>
   );
@@ -97,7 +97,7 @@ const Navbar = () => {
               >
                 <li>
                   <NavLink
-                    to={"/lostAndFoundItems"}
+                    to={"/addLostAndFoundItems"}
                     className="dropdown-option"
                   >
                     Add Lost & Found Items

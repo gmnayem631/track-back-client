@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router";
 import App from "../App";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home";
-import LostAndFoundItems from "../pages/LostAndFoundItems";
+import AddLostAndFoundItem from "../pages/AddLostAndFoundItem";
 import ManageItems from "../pages/ManageItems";
 import RecoveredItems from "../pages/RecoveredItems";
 import Register from "../pages/Register";
@@ -10,6 +10,7 @@ import Login from "../pages/Login";
 import AboutUs from "../pages/AboutUs";
 import Contact from "../pages/Contact";
 import TermsAndConditions from "../pages/TermsAndConditions";
+import LatestItems from "../components/LatestItems";
 
 const router = createBrowserRouter([
   {
@@ -21,8 +22,8 @@ const router = createBrowserRouter([
         Component: Home,
       },
       {
-        path: "/lostAndFoundItems",
-        Component: LostAndFoundItems,
+        path: "/addLostAndFoundItems",
+        Component: AddLostAndFoundItem,
       },
       {
         path: "/manageItems",
@@ -31,6 +32,12 @@ const router = createBrowserRouter([
       {
         path: "/recoveredItems",
         Component: RecoveredItems,
+      },
+      {
+        path: "/allItems",
+        Component: LatestItems,
+        loader: () =>
+          fetch("http://localhost:3000/items").then((res) => res.json()),
       },
       {
         path: "/register",

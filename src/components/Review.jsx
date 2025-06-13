@@ -29,9 +29,9 @@ const Review = () => {
             <FaStar />
           </div>
           <p className="">
-            <FaQuoteLeft className="text-secondary inline" />
-            TrackBack has made it incredibly easy to manage lost and found
-            items. It's fast, reliable, and our customers love the convenience
+            <FaQuoteLeft className="text-secondary inline" /> TrackBack has made
+            it incredibly easy to manage lost and found items. It's fast,
+            reliable, and our customers love the convenience{" "}
             <FaQuoteRight className="text-secondary inline" />
           </p>
         </div>{" "}
@@ -47,9 +47,9 @@ const Review = () => {
             <FaStar />
           </div>
           <p className="">
-            <FaQuoteLeft className="text-secondary inline" />
-            We used to spend hours tracking lost items manually. With TrackBack,
-            it's done in minutes. Total game changer.
+            <FaQuoteLeft className="text-secondary inline" /> We used to spend
+            hours tracking lost items manually. With TrackBack, it's done in
+            minutes. Total game changer.{" "}
             <FaQuoteRight className="text-secondary inline" />
           </p>
         </div>
