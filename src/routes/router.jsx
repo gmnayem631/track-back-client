@@ -11,6 +11,7 @@ import AboutUs from "../pages/AboutUs";
 import Contact from "../pages/Contact";
 import TermsAndConditions from "../pages/TermsAndConditions";
 import LatestItems from "../components/LatestItems";
+import ItemDetails from "../pages/ItemDetails";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,14 @@ const router = createBrowserRouter([
         Component: LatestItems,
         loader: () =>
           fetch("http://localhost:3000/items").then((res) => res.json()),
+      },
+      {
+        path: "/items/:id",
+        Component: ItemDetails,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/items/${params.id}`).then((res) =>
+            res.json()
+          ),
       },
       {
         path: "/register",

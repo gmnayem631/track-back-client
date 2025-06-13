@@ -1,7 +1,12 @@
 import React from "react";
+import { BiSolidCategory } from "react-icons/bi";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { MdDateRange, MdOutlineContactMail } from "react-icons/md";
+import { Link } from "react-router";
 
 const ItemsCard = ({ item }) => {
   const {
+    _id,
     thumbnail,
     postType,
     title,
@@ -13,7 +18,7 @@ const ItemsCard = ({ item }) => {
   } = item;
 
   return (
-    <div className="card bg-base-100 shadow-sm">
+    <div className="card bg-base-100 shadow-sm border border-secondary py-4 rounded-2xl">
       <figure>
         <img src={thumbnail} alt="Shoes" className="w-[100px]" />
       </figure>
@@ -33,23 +38,26 @@ const ItemsCard = ({ item }) => {
           </div>
         </div>
         <p>{description}</p>
-        <div className="">
-          Category:{" "}
+        <div className="flex items-center gap-3">
+          <BiSolidCategory className="text-2xl text-secondary" />{" "}
           <div className="badge badge-outline font-semibold">{category}</div>
         </div>
-        <div className="">
-          Location:{" "}
-          <span className="font-semibold text-neutral">{location}</span>
+        <div className="flex items-center gap-3">
+          <FaMapMarkerAlt className="text-2xl text-secondary" />{" "}
+          <div className="font-semibold text-neutral">{location}</div>
         </div>
-        <div className="">
-          Date: <span className="font-semibold text-neutral">{date}</span>
+        <div className="flex items-center gap-3">
+          <MdDateRange className="text-2xl text-secondary" />{" "}
+          <div className="font-semibold text-neutral">{date}</div>
         </div>
-        <div className="">
-          Contact:{" "}
-          <span className="font-semibold text-neutral">{contact.email}</span>
+        <div className="flex items-center gap-3">
+          <MdOutlineContactMail className="text-2xl text-secondary" />{" "}
+          <div className="font-semibold text-neutral">{contact.email}</div>
         </div>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary w-full">View Details</button>
+          <Link to={`/items/${_id}`} className="btn btn-primary w-full">
+            View Details
+          </Link>
         </div>
       </div>
     </div>
