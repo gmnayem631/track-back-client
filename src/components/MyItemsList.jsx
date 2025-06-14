@@ -1,10 +1,48 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
-const MyItemsList = ({ items }) => {
-  console.log(items);
+const MyItemsList = ({ items, user }) => {
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [formData, setFormData] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const modalRef = useRef(null);
+
+  const handleEditClick = (item) => {
+    setSelectedItem(item);
+    setFormData({ ...item });
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleUpdate = async () => {
+    try {
+      const res = await axios.put(
+        `http://localhost:3000/items/${selectedItem._id}`,
+        formData
+      );
+      if (res.data.modifiedCount > 0) {
+        toast.success("Item updated successfully!");
+        setIsModalOpen(false);
+      } else {
+        toast.error("No changes made.");
+      }
+    } catch (err) {
+      toast.error("Update failed.");
+      console.error(err);
+    }
+  };
 
   return (
     <div className="max-w-11/12 mx-auto my-10">
@@ -12,7 +50,6 @@ const MyItemsList = ({ items }) => {
 
       <div className="overflow-x-auto my-8">
         <table className="table">
-          {/* head */}
           <thead>
             <tr>
               <th>SL</th>
@@ -24,7 +61,6 @@ const MyItemsList = ({ items }) => {
             </tr>
           </thead>
           <tbody>
-            {/* row 1 */}
             {items.map((item, index) => (
               <tr key={index}>
                 <th>{index + 1}</th>
@@ -34,9 +70,9 @@ const MyItemsList = ({ items }) => {
                 <td>{item.date}</td>
                 <td>
                   <div className="flex items-center gap-3">
-                    <Link>
+                    <button onClick={() => handleEditClick(item)}>
                       <FaRegEdit className="text-3xl text-secondary" />
-                    </Link>
+                    </button>
                     <Link>
                       <MdDelete className="text-3xl text-primary" />
                     </Link>
@@ -47,6 +83,103 @@ const MyItemsList = ({ items }) => {
           </tbody>
         </table>
       </div>
+
+      {isModalOpen && (
+        <dialog open ref={modalRef} className="modal modal-open">
+          <div className="modal-box w-11/12 max-w-2xl">
+            <h3 className="font-bold text-lg mb-4">Update Item</h3>
+
+            <div className="grid grid-cols-2 gap-4">
+              {/* <label htmlFor="">Status</label> */}
+              <select
+                name="postType"
+                value={formData.postType || ""}
+                onChange={handleChange}
+                className="select select-bordered"
+              >
+                <option value="">Select Post Type</option>
+                <option value="Lost">Lost</option>
+                <option value="Found">Found</option>
+              </select>
+
+              <input
+                type="text"
+                name="thumbnail"
+                placeholder="Image URL"
+                className="input input-bordered"
+                value={formData.thumbnail || ""}
+                onChange={handleChange}
+              />
+
+              <input
+                type="text"
+                name="title"
+                placeholder="Title"
+                className="input input-bordered"
+                value={formData.title || ""}
+                onChange={handleChange}
+              />
+
+              <input
+                type="text"
+                name="category"
+                placeholder="Category"
+                className="input input-bordered"
+                value={formData.category || ""}
+                onChange={handleChange}
+              />
+
+              <input
+                type="text"
+                name="location"
+                placeholder="Location"
+                className="input input-bordered"
+                value={formData.location || ""}
+                onChange={handleChange}
+              />
+
+              <input
+                type="date"
+                name="date"
+                className="input input-bordered"
+                value={formData.date || ""}
+                onChange={handleChange}
+              />
+
+              <input
+                type="text"
+                name="displayName"
+                placeholder="Display Name"
+                className="input input-bordered"
+              />
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                className="input input-bordered"
+              />
+            </div>
+
+            <textarea
+              name="description"
+              placeholder="Description"
+              className="textarea textarea-bordered w-full mt-4"
+              value={formData.description || ""}
+              onChange={handleChange}
+            ></textarea>
+
+            <div className="modal-action">
+              <button className="btn btn-outline" onClick={handleCloseModal}>
+                Cancel
+              </button>
+              <button className="btn btn-primary" onClick={handleUpdate}>
+                Update
+              </button>
+            </div>
+          </div>
+        </dialog>
+      )}
     </div>
   );
 };
