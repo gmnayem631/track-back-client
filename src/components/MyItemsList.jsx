@@ -1,15 +1,19 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { Link } from "react-router";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 
-const MyItemsList = ({ items, user }) => {
+const MyItemsList = ({ items: initialItems, user }) => {
+  const [items, setItems] = useState(initialItems);
   const [selectedItem, setSelectedItem] = useState(null);
   const [formData, setFormData] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const modalRef = useRef(null);
+
+  // Sync with props if they change
+  useEffect(() => {
+    setItems(initialItems);
+  }, [initialItems]);
 
   const handleEditClick = (item) => {
     setSelectedItem(item);
@@ -35,12 +39,39 @@ const MyItemsList = ({ items, user }) => {
       if (res.data.modifiedCount > 0) {
         toast.success("Item updated successfully!");
         setIsModalOpen(false);
+        // Update local items list
+        setItems((prevItems) =>
+          prevItems.map((item) =>
+            item._id === selectedItem._id ? { ...item, ...formData } : item
+          )
+        );
       } else {
         toast.error("No changes made.");
       }
     } catch (err) {
       toast.error("Update failed.");
       console.error(err);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this item?"
+    );
+    if (!confirmDelete) return;
+
+    try {
+      const res = await axios.delete(`http://localhost:3000/items/${id}`);
+      if (res.status === 200) {
+        toast.success("Item deleted successfully!");
+        // Remove the deleted item from state
+        setItems((prevItems) => prevItems.filter((item) => item._id !== id));
+      } else {
+        toast.error("Failed to delete item.");
+      }
+    } catch (error) {
+      toast.error("Error deleting item.");
+      console.error(error);
     }
   };
 
@@ -62,7 +93,7 @@ const MyItemsList = ({ items, user }) => {
           </thead>
           <tbody>
             {items.map((item, index) => (
-              <tr key={index}>
+              <tr key={item._id || index}>
                 <th>{index + 1}</th>
                 <td>{item.category}</td>
                 <td>{item.postType}</td>
@@ -73,9 +104,9 @@ const MyItemsList = ({ items, user }) => {
                     <button onClick={() => handleEditClick(item)}>
                       <FaRegEdit className="text-3xl text-secondary" />
                     </button>
-                    <Link>
+                    <button onClick={() => handleDelete(item._id)}>
                       <MdDelete className="text-3xl text-primary" />
-                    </Link>
+                    </button>
                   </div>
                 </td>
               </tr>
@@ -84,6 +115,7 @@ const MyItemsList = ({ items, user }) => {
         </table>
       </div>
 
+      {/* Modal */}
       {isModalOpen && (
         <dialog open ref={modalRef} className="modal modal-open">
           <div className="modal-box w-11/12 max-w-2xl">
