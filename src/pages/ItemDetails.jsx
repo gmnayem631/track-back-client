@@ -118,10 +118,10 @@ const ItemDetails = ({ user }) => {
                 </button>
               </div>
               <div className="modal-action">
-                <form method="dialog">
+                <div method="dialog">
                   {/* if there is a button in form, it will close the modal */}
                   <button className="btn btn-primary">Close</button>
-                </form>
+                </div>
               </div>
             </div>
           </form>
