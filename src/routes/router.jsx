@@ -32,8 +32,14 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/manageItems",
-        Component: ManageItems,
+        path: "/myItems",
+        element: (
+          <PrivateRoute>
+            <ManageItems></ManageItems>
+          </PrivateRoute>
+        ),
+        loader: () =>
+          fetch("http://localhost:3000/items").then((res) => res.json()),
       },
       {
         path: "/recoveredItems",

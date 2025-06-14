@@ -53,7 +53,7 @@ const ItemDetails = ({ user }) => {
           <strong>Date:</strong> {date}
         </p>
         <p>
-          <strong>Contact:</strong> {contactName} ({contactEmail})
+          <strong>Contact:</strong> {contactEmail}
         </p>
       </div>
 
@@ -64,7 +64,7 @@ const ItemDetails = ({ user }) => {
         {postType === "Lost" ? "Found This!" : "This is Mine!"}
       </button>
 
-      {/* DaisyUI Modal */}
+      {/* Modal */}
       <dialog
         id="recovery_modal"
         className="modal modal-bottom sm:modal-middle"

@@ -40,6 +40,7 @@ const AddItem = () => {
         {/* Post Type */}
         <div className="form-control">
           <label className="label font-semibold">Post Type</label>
+          <br />
           <select name="postType" className="select select-bordered">
             <option disabled selected>
               Choose Type
@@ -51,7 +52,8 @@ const AddItem = () => {
 
         {/* Thumbnail URL */}
         <div className="form-control">
-          <label className="label font-semibold">Thumbnail (Image URL)</label>
+          <label className="label font-semibold">Thumbnail URL</label>
+          <br />
           <input
             name="thumbnailUrl"
             type="text"
@@ -63,6 +65,7 @@ const AddItem = () => {
         {/* Title */}
         <div className="form-control">
           <label className="label font-semibold">Title</label>
+          <br />
           <input
             name="title"
             type="text"
@@ -74,6 +77,7 @@ const AddItem = () => {
         {/* Category */}
         <div className="form-control">
           <label className="label font-semibold">Category</label>
+          <br />
           <select name="category" className="select select-bordered">
             <option disabled selected>
               Select category
@@ -89,6 +93,7 @@ const AddItem = () => {
         {/* Location */}
         <div className="form-control">
           <label className="label font-semibold">Location</label>
+          <br />
           <input
             name="location"
             type="text"
@@ -99,26 +104,28 @@ const AddItem = () => {
 
         {/* Date Lost/Found */}
         <div className="form-control">
-          <label className="label font-semibold">Date Lost/Found</label>
+          <label className="label font-semibold">Date of Lost/Found</label>
+          <br />
           <div className="relative">
             <input
-              type="date"
-              placeholder="Select a date"
+              type="text"
+              placeholder="yyyy-mm-dd"
               className="input input-bordered w-full"
             />
-            <FaCalendarAlt className="absolute top-3 right-4 text-gray-500" />
           </div>
         </div>
 
         {/* Contact Info */}
         <div className="form-control">
           <label className="label font-semibold">Contact Info</label>
+          <br />
           <input name="contact" type="text" className="input input-bordered" />
         </div>
 
         {/* Description */}
         <div className="form-control md:col-span-2">
           <label className="label font-semibold">Description</label>
+          <br />
           <textarea
             name="description"
             className="textarea textarea-bordered"

@@ -52,7 +52,7 @@ const ItemsCard = ({ item }) => {
         </div>
         <div className="flex items-center gap-3">
           <MdOutlineContactMail className="text-2xl text-secondary" />{" "}
-          <div className="font-semibold text-neutral">{contact.email}</div>
+          <div className="font-semibold text-neutral">{contact}</div>
         </div>
         <div className="card-actions justify-end">
           <Link to={`/items/${_id}`} className="btn btn-primary w-full">

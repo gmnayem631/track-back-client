@@ -109,7 +109,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/manageItems"} className="dropdown-option">
+                  <NavLink to={"/myItems"} className="dropdown-option">
                     Manage My Items
                   </NavLink>
                 </li>
