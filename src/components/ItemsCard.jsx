@@ -56,7 +56,10 @@ const ItemsCard = ({ item }) => {
           <div className="font-semibold text-neutral">{contact}</div>
         </div>
         <div className="card-actions justify-end">
-          <Link to={`/items/${_id}`} className="btn btn-primary w-full">
+          <Link
+            to={`/items/${_id}`}
+            className="btn btn-primary w-full text-neutral text-base"
+          >
             View Details
           </Link>
         </div>
