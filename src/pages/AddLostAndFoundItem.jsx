@@ -15,7 +15,7 @@ const AddItem = () => {
 
     // save job to the database
     axios
-      .post("http://localhost:3000/items", data)
+      .post("https://track-back-server.vercel.app/items", data)
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({

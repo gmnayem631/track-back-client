@@ -41,26 +41,32 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: () =>
-          fetch("http://localhost:3000/items").then((res) => res.json()),
+          fetch("https://track-back-server.vercel.app/items").then((res) =>
+            res.json()
+          ),
       },
       {
         path: "/recoveredItems",
         Component: RecoveredItems,
         loader: () =>
-          fetch("http://localhost:3000/items").then((res) => res.json()),
+          fetch("https://track-back-server.vercel.app/items").then((res) =>
+            res.json()
+          ),
       },
       {
         path: "/allItems",
         Component: LatestItems,
         loader: () =>
-          fetch("http://localhost:3000/items").then((res) => res.json()),
+          fetch("https://track-back-server.vercel.app/items").then((res) =>
+            res.json()
+          ),
       },
       {
         path: "/items/:id",
         Component: ItemDetails,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/items/${params.id}`).then((res) =>
-            res.json()
+          fetch(`https://track-back-server.vercel.app/items/${params.id}`).then(
+            (res) => res.json()
           ),
       },
       {

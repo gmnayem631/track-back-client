@@ -19,7 +19,7 @@ const MyItemsList = ({ items: initialItems }) => {
     if (!user?.email) return;
 
     axios
-      .get(`http://localhost:3000/items?email=${user.email}`)
+      .get(`https://track-back-server.vercel.app/items?email=${user.email}`)
       .then((res) => {
         setItems(res.data);
       })
@@ -46,7 +46,7 @@ const MyItemsList = ({ items: initialItems }) => {
   const handleUpdate = async () => {
     try {
       const res = await axios.put(
-        `http://localhost:3000/items/${selectedItem._id}`,
+        `https://track-back-server.vercel.app/items/${selectedItem._id}`,
         formData
       );
       if (res.data.modifiedCount > 0) {
@@ -74,7 +74,9 @@ const MyItemsList = ({ items: initialItems }) => {
     if (!confirmDelete) return;
 
     try {
-      const res = await axios.delete(`http://localhost:3000/items/${id}`);
+      const res = await axios.delete(
+        `https://track-back-server.vercel.app/items/${id}`
+      );
       if (res.status === 200) {
         toast.success("Item deleted successfully!");
         setItems((prevItems) => prevItems.filter((item) => item._id !== id));
