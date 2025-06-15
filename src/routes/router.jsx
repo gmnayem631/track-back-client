@@ -44,6 +44,8 @@ const router = createBrowserRouter([
       {
         path: "/recoveredItems",
         Component: RecoveredItems,
+        loader: () =>
+          fetch("http://localhost:3000/items").then((res) => res.json()),
       },
       {
         path: "/allItems",

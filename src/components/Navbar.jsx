@@ -65,10 +65,12 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <div className="md:flex hidden justify-center items-center cursor-pointer">
-          <img src={logo} alt="" className="h-[50px]" />
-          <a className="text-xl text-primary font-bold">TrackBack</a>
-        </div>
+        <Link to={"/"}>
+          <div className="md:flex hidden justify-center items-center cursor-pointer">
+            <img src={logo} alt="" className="h-[50px]" />
+            <a className="text-xl text-primary font-bold">TrackBack</a>
+          </div>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -76,45 +78,30 @@ const Navbar = () => {
       <div className="navbar-end gap-5">
         {user ? (
           <div className="flex items-center gap-4">
-            <>
-              <button
-                className="cursor-pointer"
-                popoverTarget="popover-1"
-                style={{ anchorName: "--anchor-1" }}
-              >
-                <img
-                  src={user.photoURL}
-                  className="rounded-full h-[60px]"
-                  alt=""
-                />
-              </button>
-
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img src={user.photoURL} alt="User Avatar" />
+                </div>
+              </label>
               <ul
-                className="dropdown menu w-52 rounded-box bg-base-100 shadow-sm"
-                popover="auto"
-                id="popover-1"
-                style={{ positionAnchor: "--anchor-1" }}
+                tabIndex={0}
+                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <NavLink
-                    to={"/addLostAndFoundItems"}
-                    className="dropdown-option"
-                  >
+                  <NavLink to="/addLostAndFoundItems">
                     Add Lost & Found Items
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/recoveredItems"} className="dropdown-option">
-                    All Recovered Items
-                  </NavLink>
+                  <NavLink to="/recoveredItems">All Recovered Items</NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/myItems"} className="dropdown-option">
-                    Manage My Items
-                  </NavLink>
+                  <NavLink to="/myItems">Manage My Items</NavLink>
                 </li>
               </ul>
-            </>
+            </div>
+
             <button
               onClick={handleLogOut}
               className="btn btn-primary text-neutral text-base"

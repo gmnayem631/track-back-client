@@ -7,7 +7,7 @@ import { AuthContext } from "../context/AuthContext";
 
 const MyItemsList = ({ items: initialItems }) => {
   const { user } = use(AuthContext);
-  console.log(user.email);
+
   const [items, setItems] = useState(initialItems);
   const [selectedItem, setSelectedItem] = useState(null);
   const [formData, setFormData] = useState({});
