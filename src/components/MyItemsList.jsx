@@ -1,10 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, use } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { AuthContext } from "../context/AuthContext";
 
 const MyItemsList = ({ items: initialItems }) => {
+  const { user } = use(AuthContext);
+  console.log(user.email);
   const [items, setItems] = useState(initialItems);
   const [selectedItem, setSelectedItem] = useState(null);
   const [formData, setFormData] = useState({});
@@ -14,8 +17,17 @@ const MyItemsList = ({ items: initialItems }) => {
   const modalRef = useRef(null);
 
   useEffect(() => {
-    setItems(initialItems);
-  }, [initialItems]);
+    if (!user?.email) return;
+
+    axios
+      .get(`http://localhost:3000/items?email=${user.email}`)
+      .then((res) => {
+        setItems(res.data);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch user's items:", error);
+      });
+  }, [user]);
 
   const handleEditClick = (item) => {
     setSelectedItem(item);
