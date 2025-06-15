@@ -13,7 +13,6 @@ const MyItemsList = ({ items: initialItems }) => {
   const [formData, setFormData] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // defining modelRef
   const modalRef = useRef(null);
 
   useEffect(() => {
@@ -53,7 +52,7 @@ const MyItemsList = ({ items: initialItems }) => {
       if (res.data.modifiedCount > 0) {
         toast.success("Item updated successfully!");
         setIsModalOpen(false);
-        // Update local items list
+
         setItems((prevItems) =>
           prevItems.map((item) =>
             item._id === selectedItem._id ? { ...item, ...formData } : item
@@ -78,7 +77,6 @@ const MyItemsList = ({ items: initialItems }) => {
       const res = await axios.delete(`http://localhost:3000/items/${id}`);
       if (res.status === 200) {
         toast.success("Item deleted successfully!");
-        // Remove the deleted item from state
         setItems((prevItems) => prevItems.filter((item) => item._id !== id));
       } else {
         toast.error("Failed to delete item.");

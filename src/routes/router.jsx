@@ -13,11 +13,13 @@ import TermsAndConditions from "../pages/TermsAndConditions";
 import LatestItems from "../components/LatestItems";
 import ItemDetails from "../pages/ItemDetails";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
