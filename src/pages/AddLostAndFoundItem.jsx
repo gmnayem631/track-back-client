@@ -1,8 +1,11 @@
 import axios from "axios";
-import { FaCalendarAlt } from "react-icons/fa";
+import { use } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../context/AuthContext";
 
 const AddItem = () => {
+  const { user } = use(AuthContext);
+
   const handleAddItem = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -55,7 +58,7 @@ const AddItem = () => {
           <label className="label font-semibold">Thumbnail URL</label>
           <br />
           <input
-            name="thumbnailUrl"
+            name="thumbnail"
             type="text"
             placeholder="https://example.com/image.jpg"
             className="input input-bordered"
@@ -108,6 +111,7 @@ const AddItem = () => {
           <br />
           <div className="relative">
             <input
+              name="date"
               type="text"
               placeholder="yyyy-mm-dd"
               className="input input-bordered w-full"
@@ -119,7 +123,12 @@ const AddItem = () => {
         <div className="form-control">
           <label className="label font-semibold">Contact Info</label>
           <br />
-          <input name="contact" type="text" className="input input-bordered" />
+          <input
+            name="contact"
+            type="text"
+            className="input input-bordered"
+            value={user.email}
+          />
         </div>
 
         {/* Description */}

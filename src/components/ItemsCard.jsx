@@ -7,7 +7,7 @@ import { Link } from "react-router";
 const ItemsCard = ({ item }) => {
   const {
     _id,
-    thumbnail,
+    thumbnailUrl,
     postType,
     title,
     description,
@@ -16,11 +16,12 @@ const ItemsCard = ({ item }) => {
     date,
     contact,
   } = item;
+  console.log(item);
 
   return (
-    <div className="card bg-base-100 shadow-sm border border-secondary py-4 rounded-2xl">
+    <div className="card bg-white shadow-sm border border-secondary py-4 rounded-2xl">
       <figure>
-        <img src={thumbnail} alt="Shoes" className="w-[100px]" />
+        <img src={thumbnailUrl} className="w-[100px]" />
       </figure>
       <div className="card-body">
         <div className="flex justify-between">

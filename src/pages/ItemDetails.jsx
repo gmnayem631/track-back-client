@@ -7,7 +7,7 @@ const ItemDetails = ({ user }) => {
   const {
     _id,
     postType,
-    thumbnail,
+    thumbnailUrl,
     title,
     description,
     category,
@@ -38,7 +38,7 @@ const ItemDetails = ({ user }) => {
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg my-10">
       <div className="flex justify-center">
-        <img src={thumbnail} alt={title} className="h-64 rounded-md" />
+        <img src={thumbnailUrl} alt={title} className="h-64 rounded-md" />
       </div>
       <h2 className="text-2xl font-bold mt-4">{title}</h2>
       <p className="text-gray-700 mt-2">{description}</p>

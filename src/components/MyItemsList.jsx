@@ -4,13 +4,15 @@ import { MdDelete } from "react-icons/md";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 
-const MyItemsList = ({ items: initialItems, user }) => {
+const MyItemsList = ({ items: initialItems }) => {
   const [items, setItems] = useState(initialItems);
   const [selectedItem, setSelectedItem] = useState(null);
   const [formData, setFormData] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Sync with props if they change
+  // defining modelRef
+  const modalRef = useRef(null);
+
   useEffect(() => {
     setItems(initialItems);
   }, [initialItems]);
@@ -101,10 +103,16 @@ const MyItemsList = ({ items: initialItems, user }) => {
                 <td>{item.date}</td>
                 <td>
                   <div className="flex items-center gap-3">
-                    <button onClick={() => handleEditClick(item)}>
+                    <button
+                      onClick={() => handleEditClick(item)}
+                      className="cursor-pointer"
+                    >
                       <FaRegEdit className="text-3xl text-secondary" />
                     </button>
-                    <button onClick={() => handleDelete(item._id)}>
+                    <button
+                      onClick={() => handleDelete(item._id)}
+                      className="cursor-pointer"
+                    >
                       <MdDelete className="text-3xl text-primary" />
                     </button>
                   </div>
