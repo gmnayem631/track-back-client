@@ -16,7 +16,7 @@ const Review = () => {
         </p>
       </div>
 
-      <div className="client-reviews grid grid-cols-2 gap-12 max-w-11/12 mx-auto my-6">
+      <div className="client-reviews grid grid-cols-1 md:grid-cols-2 gap-12 max-w-11/12 mx-auto my-6">
         {/* review 1 */}
         <div className="card1 bg-base-300 text-neutral text-center rounded-xl py-6 px-4 flex flex-col gap-3">
           <h2 className="text-3xl font-semibold">Emily R.</h2>
