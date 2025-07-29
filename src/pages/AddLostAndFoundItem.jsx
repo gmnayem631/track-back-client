@@ -1,16 +1,23 @@
 import axios from "axios";
-import { use } from "react";
+import { use, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../context/AuthContext";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const AddItem = () => {
   const { user } = use(AuthContext);
+  const [selectedDate, setSelectedDate] = useState(null);
 
   const handleAddItem = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
+
+    // Inject formatted date from DatePicker
+    data.date = selectedDate ? selectedDate.toISOString().split("T")[0] : "";
+
     console.log(data);
 
     // save job to the database
@@ -109,14 +116,13 @@ const AddItem = () => {
         <div className="form-control">
           <label className="label font-semibold">Date of Lost/Found</label>
           <br />
-          <div className="relative">
-            <input
-              name="date"
-              type="text"
-              placeholder="yyyy-mm-dd"
-              className="input input-bordered w-full"
-            />
-          </div>
+          <DatePicker
+            selected={selectedDate}
+            onChange={(date) => setSelectedDate(date)}
+            dateFormat="yyyy-MM-dd"
+            placeholderText="Select a date"
+            className="input input-bordered w-full"
+          />
         </div>
 
         {/* Contact Info */}
@@ -128,6 +134,7 @@ const AddItem = () => {
             type="text"
             className="input input-bordered"
             value={user.email}
+            readOnly
           />
         </div>
 
