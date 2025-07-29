@@ -23,7 +23,6 @@ const steps = [
   },
 ];
 
-// Animation variant for cards
 const cardVariants = {
   hidden: { opacity: 0, y: 40 },
   visible: (i) => ({
@@ -48,7 +47,8 @@ const HowItWorks = () => {
             className="card bg-white rounded-2xl shadow-xl p-6"
             variants={cardVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
             custom={index}
           >
             <div className="flex flex-col items-center gap-4">
