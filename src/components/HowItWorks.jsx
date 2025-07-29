@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { FaClipboardList, FaUserShield, FaHandshake } from "react-icons/fa";
 
 const steps = [
@@ -22,13 +23,34 @@ const steps = [
   },
 ];
 
+// Animation variant for cards
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.2,
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  }),
+};
+
 const HowItWorks = () => {
   return (
     <section className="py-12 text-center max-w-6xl mx-auto px-4">
       <h2 className="text-4xl font-bold mb-10 text-neutral">How It Works</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {steps.map((step, index) => (
-          <div key={index} className="card bg-white rounded-2xl shadow-xl p-6">
+          <motion.div
+            key={index}
+            className="card bg-white rounded-2xl shadow-xl p-6"
+            variants={cardVariants}
+            initial="hidden"
+            animate="visible"
+            custom={index}
+          >
             <div className="flex flex-col items-center gap-4">
               <div className="bg-white p-6 rounded-full shadow-md">
                 {step.icon}
@@ -40,7 +62,7 @@ const HowItWorks = () => {
                 {step.description}
               </p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
