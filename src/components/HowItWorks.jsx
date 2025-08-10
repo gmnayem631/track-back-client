@@ -73,6 +73,12 @@ const HowItWorks = () => {
                 {step.description}
               </p>
             </div>
+            <button
+              type="button"
+              className="mt-6 self-center px-6 py-2 bg-secondary text-white rounded-lg hover:bg-secondary-focus transition btn"
+            >
+              See more
+            </button>
           </motion.div>
         ))}
       </div>
