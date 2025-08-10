@@ -1,6 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaClipboardList, FaUserShield, FaHandshake } from "react-icons/fa";
+import {
+  FaClipboardList,
+  FaUserShield,
+  FaHandshake,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 
 const steps = [
   {
@@ -21,6 +26,12 @@ const steps = [
     description:
       "As soon as you are authenticated, you receive the information to pick it up or have it delivered. Remember to communicate the reference's number found",
   },
+  {
+    icon: <FaMapMarkerAlt className="text-secondary text-4xl" />,
+    title: "Track its location",
+    description:
+      "Easily see where your item is right now and get step-by-step directions to retrieve it, so you never waste time searching.",
+  },
 ];
 
 const cardVariants = {
@@ -38,9 +49,9 @@ const cardVariants = {
 
 const HowItWorks = () => {
   return (
-    <section className="py-12 text-center max-w-6xl mx-auto px-4">
+    <section className="py-12 text-center px-4">
       <h2 className="text-4xl font-bold mb-10 text-neutral">How It Works</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {steps.map((step, index) => (
           <motion.div
             key={index}

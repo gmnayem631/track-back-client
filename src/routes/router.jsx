@@ -14,6 +14,8 @@ import LatestItems from "../components/LatestItems";
 import ItemDetails from "../pages/ItemDetails";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../pages/ErrorPage";
+import Profile from "../components/Profile";
+import Analytics from "../pages/Analytics";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +62,14 @@ const router = createBrowserRouter([
           fetch("https://track-back-server.vercel.app/items").then((res) =>
             res.json()
           ),
+      },
+      {
+        path: "/profile",
+        Component: Profile,
+      },
+      {
+        path: "/analytics",
+        Component: Analytics,
       },
       {
         path: "/items/:id",

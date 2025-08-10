@@ -5,6 +5,7 @@ import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
   const { user, logOutUser } = use(AuthContext);
+  console.log(user);
 
   const handleLogOut = () => {
     logOutUser()
@@ -31,6 +32,18 @@ const Navbar = () => {
         Lost & Found Items
       </NavLink>
       <NavLink
+        to={"/profile"}
+        className="btn bg-transparent text-neutral border-0 text-base"
+      >
+        Profile
+      </NavLink>
+      <NavLink
+        to={"/analytics"}
+        className="btn bg-transparent text-neutral border-0 text-base"
+      >
+        Analytics
+      </NavLink>
+      <NavLink
         to={"/aboutUs"}
         className="btn bg-transparent text-neutral border-0 text-base"
       >
@@ -39,7 +52,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar p-0 max-w-11/12 mx-auto ">
+    <div className="navbar p-0 max-w-11/12 mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -68,7 +81,7 @@ const Navbar = () => {
         <Link to={"/"}>
           <div className="md:flex hidden justify-center items-center cursor-pointer">
             <img src={logo} alt="" className="h-[50px]" />
-            <a className="text-xl text-primary font-bold">TrackBack</a>
+            <span className="text-xl text-primary font-bold">TrackBack</span>
           </div>
         </Link>
       </div>
@@ -98,6 +111,12 @@ const Navbar = () => {
                 </li>
                 <li>
                   <NavLink to="/myItems">Manage My Items</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/profile">My Profile</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/analytics">Analytics</NavLink>
                 </li>
               </ul>
             </div>
