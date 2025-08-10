@@ -4,6 +4,7 @@ import HowItWorks from "../components/HowItWorks";
 import Review from "../components/Review";
 import LatestItems from "../components/LatestItems";
 import TipsAndGuidelines from "../components/TipsAndGuidelines ";
+import SuccessStories from "../components/SuccessStories";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Banner></Banner>
       <HowItWorks></HowItWorks>
       <TipsAndGuidelines></TipsAndGuidelines>
+      <SuccessStories></SuccessStories>
       <Review></Review>
     </div>
   );
