@@ -55,7 +55,7 @@ const HowItWorks = () => {
         {steps.map((step, index) => (
           <motion.div
             key={index}
-            className="card bg-white rounded-2xl shadow-xl p-6"
+            className="card bg-indigo-50 rounded-2xl shadow-xl p-6"
             variants={cardVariants}
             initial="hidden"
             whileInView="visible"
