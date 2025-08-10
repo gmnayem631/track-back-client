@@ -65,11 +65,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        Component: Profile,
+        element: (
+          <PrivateRoute>
+            <Profile></Profile>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/analytics",
-        Component: Analytics,
+        element: (
+          <PrivateRoute>
+            <Analytics></Analytics>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/items/:id",
